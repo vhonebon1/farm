@@ -27,6 +27,10 @@ Simulate adding the product to the basket using Redux.
 - We have attached a [header bar mockup](mockups/header.png) which we would also like you to build
 - The basket should update with the quantity of products in the basket.
 
+## Mobile Friendly
+
+We haven't provided you with mobile designs but it should be responsive so I can work accross mobile and desktop
+
 ## Testing
 
 Please write unit tests using Jest
