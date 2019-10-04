@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import products from './data/products.json';
 import ProductGrid from './components/productGrid.jsx'
 
@@ -10,18 +8,21 @@ class App extends React.Component {
     super(props);
     this.state = {
       products: [],
+      hasData: false
     };
   }
 
   componentDidMount() {
-    console.log(products.data.productSearch.nodes)
-    this.setState({ products: products.data.productSearch.nodes })
+    this.setState({
+      products: products.data.productSearch.nodes,
+      hasData: true
+    })
   }
 
   render() {
     return(
       <div className="App">
-        { (this.state.products && this.state.products.length > 0) &&
+        { this.state.hasData &&
           <ProductGrid
             products={this.state.products}
           />
