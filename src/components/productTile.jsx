@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from './dropdown';
+import formatter from './../utils/priceFormatter';
 
 class ProductTile extends React.Component {
    constructor(props) {
@@ -10,14 +11,14 @@ class ProductTile extends React.Component {
    }
 
    handleVarientSelect = (id) => {
-     this.setState({ selectedVariant: id })
+     this.setState({ selectedVariant: id });
    }
 
-   variantOptions = () => {
+   getOptions = () => {
      const { variants } = this.props.product;
      const options = [];
      for (var variant in variants) {
-       options.push({'label': variants[variant].measurement.displayName, 'id': variant})
+       options.push({'label': variants[variant].measurement.displayName, 'id': variant});
      }
      return options;
    }
@@ -27,8 +28,8 @@ class ProductTile extends React.Component {
      const { selectedVariant } = this.state;
      const displayPrice = selectedVariant ? variants[selectedVariant].price.pence : price.pence;
      const displayPricePerUnit = selectedVariant ? variants[selectedVariant].pricePerUnit : pricePerUnit;
-     const displaySaleText = selectedVariant ? variants[selectedVariant].saleText : saleText;
-     const displaySalePrice = selectedVariant ? variants[selectedVariant].salePrice.pence : salePrice.pence;
+     const displaySaleText = salePrice ? selectedVariant ? variants[selectedVariant].saleText : saleText : null;
+     const displaySalePrice = salePrice ? selectedVariant ? variants[selectedVariant].salePrice.pence : salePrice.pence : null;
 
      return(
        <div className="productTile">
@@ -40,7 +41,7 @@ class ProductTile extends React.Component {
            <div className="productTile__info--producer">{producer.name}</div>
            { variants.length > 1 ?
              <Dropdown
-               options={this.variantOptions()}
+               options={this.getOptions()}
                selected={this.selectedVariant}
                customOnClick={this.handleVarientSelect}
               />
@@ -49,12 +50,15 @@ class ProductTile extends React.Component {
            { saleText ?
              <React.Fragment>
                <div className="productTile__info--saleText">{displaySaleText}</div>
-               <div className="productTile__info--initialPrice">£{displayPrice / 100}</div>
-               <div className="productTile__info--salePrice">£{displaySalePrice / 100}</div>
+               <div className="productTile__info--initialPrice">{formatter.format(displayPrice/100)}</div>
+               <div className="productTile__info--priceWrapper">
+                 <div className="productTile__info--salePrice">{formatter.format(displaySalePrice/100)}</div>
+                 <div className="productTile__info--price">{displayPricePerUnit}</div>
+               </div>
              </React.Fragment>
              :
              <div className="productTile__info--priceWrapper">
-               <div className="productTile__info--price">£{displayPrice / 100}</div>
+               <div className="productTile__info--price">{formatter.format(displayPrice/100)}</div>
                <div className="productTile__info--price">{displayPricePerUnit}</div>
              </div>
            }
@@ -62,8 +66,8 @@ class ProductTile extends React.Component {
              <div className="productTile__bookmark"></div>
              <button className="button">Add</button>
            </div>
+         </div>
        </div>
-     </div>
      )
    }
 }
