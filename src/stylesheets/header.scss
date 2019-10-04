@@ -1,0 +1,29 @@
+.header {
+  position: fixed;
+  top: 0;
+  height: $header-height;
+  width: 100%;
+  .header__topBar {
+    background-color: $farmdrop-green;
+    img {
+      height: $sub-header-height;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .header__topBar, .header__bottomBar {
+    height: $sub-header-height;
+    padding: 0 $standard-side-margin;
+  }
+  .header__bottomBar {
+    display: flex;
+    justify-content: flex-end;
+    img {
+      margin: auto 0;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

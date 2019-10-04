@@ -2,14 +2,15 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin: 0 60px;
+  margin: 0 $standard-side-margin;
+  margin-top: $top-margin;
 }
 .productTile {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 400px;
-  flex: 0 0 24%;
+  flex: 0 0 21%;
+  margin-bottom: 15px;
   .productTile__image {
     max-width: 100%;
   }
@@ -26,6 +27,8 @@
   .productTile__info {
     text-align: left;
     padding: 0 15px;
+    .productTile__info--name {
+    }
     .productTile__info--producer {
       color: $farmdrop-green;
       margin-bottom: 1em;
