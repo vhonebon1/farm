@@ -23,10 +23,12 @@ class ProductTile extends React.Component {
    }
 
    render() {
-     const { name, producer, measurement, price, pricePerUnit, media, variants } = this.props.product;
+     const { name, producer, measurement, price, pricePerUnit, media, variants, saleText, salePrice } = this.props.product;
      const { selectedVariant } = this.state;
      const displayPrice = selectedVariant ? variants[selectedVariant].price.pence : price.pence;
      const displayPricePerUnit = selectedVariant ? variants[selectedVariant].pricePerUnit : pricePerUnit;
+     const displaySaleText = selectedVariant ? variants[selectedVariant].saleText : saleText;
+     const displaySalePrice = selectedVariant ? variants[selectedVariant].salePrice.pence : salePrice.pence;
 
      return(
        <div className="productTile">
@@ -44,11 +46,22 @@ class ProductTile extends React.Component {
               />
              : <div className="productTile__info--measurement">{measurement.displayName}</div>
            }
-         <div className="productTile__info--priceWrapper">
-           <div className="productTile__info--price">£{displayPrice / 100}</div>
-           <div className="productTile__info--price">{displayPricePerUnit}</div>
-         </div>
-         <button className="button">Add</button>
+           { saleText ?
+             <React.Fragment>
+               <div className="productTile__info--saleText">{displaySaleText}</div>
+               <div className="productTile__info--initialPrice">£{displayPrice / 100}</div>
+               <div className="productTile__info--salePrice">£{displaySalePrice / 100}</div>
+             </React.Fragment>
+             :
+             <div className="productTile__info--priceWrapper">
+               <div className="productTile__info--price">£{displayPrice / 100}</div>
+               <div className="productTile__info--price">{displayPricePerUnit}</div>
+             </div>
+           }
+           <div className="productTile__actionButtons">
+             <div className="productTile__bookmark"></div>
+             <button className="button">Add</button>
+           </div>
        </div>
      </div>
      )

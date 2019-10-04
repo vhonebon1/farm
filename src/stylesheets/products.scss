@@ -13,7 +13,15 @@
   .productTile__image {
     max-width: 100%;
   }
-  .productTile__image--wrapper {
+  .productTile__actionButtons {
+    display: flex;
+    justify-content: space-between;
+    .productTile__bookmark {
+      width: 35px;
+      height: 35px;
+      border: 1px solid $grey-light;
+      margin: auto 0;
+    }
   }
   .productTile__info {
     text-align: left;
@@ -30,6 +38,15 @@
       margin: 1em 0;
       text-transform: uppercase;
       color: $grey-dark;
+    }
+    .productTile__info--saleText,
+    .productTile__info--salePrice, {
+      color: $sale-red;
+      margin-bottom: 1em;
+    }
+    .productTile__info--initialPrice {
+      text-decoration: line-through;
+      margin-bottom: 1em;
     }
   }
 }
