@@ -9,8 +9,21 @@
   flex: 0 0 21%;
   margin-bottom: 15px;
   border: 1px solid $grey-lighter;
+  .productTile__image--wrapper {
+    position: relative;
+  }
   .productTile__image {
     max-width: 100%;
+  }
+  .productTile__tag {
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    padding: 0.8em;
+    font-size: 0.8em;
+    background-color: $green-dark;
+    color: white;
+    text-transform: uppercase;
   }
   .productTile__actionButtons {
     @include flex-row;

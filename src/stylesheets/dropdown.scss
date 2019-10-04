@@ -24,11 +24,11 @@
   .dropdown__option {
     max-width: 180px;
     padding: 0.5em;
-    color: $selected-green;
+    color: $green-dark;
     background-color: white;
     border-bottom: 1px solid grey;
     &.selected, &:hover {
-      background-color: $selected-green;
+      background-color: $green-dark;
       color: white;
     }
     &:hover {

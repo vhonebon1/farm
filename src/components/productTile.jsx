@@ -28,7 +28,7 @@ class ProductTile extends React.Component {
    }
 
    render() {
-     const { name, producer, measurement, price, pricePerUnit, media, variants, saleText, salePrice } = this.props.product;
+     const { name, producer, measurement, price, pricePerUnit, media, variants, saleText, salePrice, tags } = this.props.product;
      const { selectedVariant } = this.state;
      const displayPrice = selectedVariant ? variants[selectedVariant].price.pence : price.pence;
      const displayPricePerUnit = selectedVariant ? variants[selectedVariant].pricePerUnit : pricePerUnit;
@@ -39,6 +39,7 @@ class ProductTile extends React.Component {
        <div className="productTile">
          <div className="productTile__image--wrapper">
            <img className="productTile__image" src={media[0].url} alt="" />
+           { tags.length > 0 && <div className="productTile__tag">{tags[0].name}</div> }
          </div>
          <div className="productTile__info">
            <div>
