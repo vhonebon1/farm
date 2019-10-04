@@ -2,12 +2,12 @@ import React from 'react';
 import ProductTile from './productTile';
 
 const ProductGrid = ({ products }) =>
-  <React.Fragment>
+  <div className="productGrid">
     { products.map((product) =>
         <ProductTile product={product} />
       )
     }
-  </React.Fragment>
+  </div>
 
 
 export default ProductGrid;
