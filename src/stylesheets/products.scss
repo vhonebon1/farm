@@ -1,22 +1,20 @@
 .productGrid {
-  display: flex;
-  justify-content: space-around;
+  @include flex-row;
   flex-wrap: wrap;
   margin: 0 $standard-side-margin;
   margin-top: $top-margin;
 }
 .productTile {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include flex-column;
   flex: 0 0 21%;
   margin-bottom: 15px;
+  border: 1px solid $grey-lighter;
   .productTile__image {
     max-width: 100%;
   }
   .productTile__actionButtons {
-    display: flex;
-    justify-content: space-between;
+    @include flex-row;
+    padding: 0 15px;
     .productTile__bookmark {
       width: 35px;
       height: 35px;
@@ -28,19 +26,22 @@
     text-align: left;
     padding: 0 15px;
     .productTile__info--name {
+      font-size: 1em;
+      line-height: 1.2em;
     }
     .productTile__info--producer {
       color: $farmdrop-green;
       margin-bottom: 1em;
+      font-size: 0.9em;
     }
     .productTile__info--priceWrapper {
-      display: flex;
-      justify-content: space-between;
+      @include flex-row;
     }
     .productTile__info--measurement {
       margin: 1em 0;
       text-transform: uppercase;
       color: $grey-dark;
+      font-size: 0.9em;
     }
     .productTile__info--saleText,
     .productTile__info--salePrice, {

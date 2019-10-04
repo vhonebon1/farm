@@ -11,14 +11,18 @@ class ProductTile extends React.Component {
    }
 
    handleVarientSelect = (id) => {
-     this.setState({ selectedVariant: id });
+     if (id !== 0) {
+       this.setState({ selectedVariant: id - 1 });
+     } else {
+       this.setState({ selectedVariant: null });
+     }
    }
 
    getOptions = () => {
      const { variants } = this.props.product;
-     const options = [];
+     const options = [{'label': this.props.product.measurement.displayName, 'id': 0}];
      for (var variant in variants) {
-       options.push({'label': variants[variant].measurement.displayName, 'id': variant});
+       options.push({'label': variants[variant].measurement.displayName, 'id': parseInt(variant) + 1});
      }
      return options;
    }
@@ -34,38 +38,40 @@ class ProductTile extends React.Component {
      return(
        <div className="productTile">
          <div className="productTile__image--wrapper">
-           <img className="productTile__image" src={media[0].url} />
+           <img className="productTile__image" src={media[0].url} alt="" />
          </div>
          <div className="productTile__info">
-           <h2 className="productTile__info--name">{name}</h2>
-           <div className="productTile__info--producer">{producer.name}</div>
-           { variants.length > 1 ?
-             <Dropdown
-               options={this.getOptions()}
-               selected={this.selectedVariant}
-               customOnClick={this.handleVarientSelect}
-              />
-             : <div className="productTile__info--measurement">{measurement.displayName}</div>
-           }
-           { saleText ?
-             <React.Fragment>
-               <div className="productTile__info--saleText">{displaySaleText}</div>
-               <div className="productTile__info--initialPrice">{formatter.format(displayPrice/100)}</div>
+           <div>
+             <h2 className="productTile__info--name">{name}</h2>
+             <div className="productTile__info--producer">{producer.name}</div>
+             { variants.length > 1 ?
+               <Dropdown
+                 options={this.getOptions()}
+                 selected={this.selectedVariant}
+                 customOnClick={this.handleVarientSelect}
+                />
+               : <div className="productTile__info--measurement">{measurement.displayName}</div>
+             }
+             { saleText ?
+               <React.Fragment>
+                 <div className="productTile__info--saleText">{displaySaleText}</div>
+                 <div className="productTile__info--initialPrice">{formatter.format(displayPrice/100)}</div>
+                 <div className="productTile__info--priceWrapper">
+                   <div className="productTile__info--salePrice">{formatter.format(displaySalePrice/100)}</div>
+                   <div className="productTile__info--price">{displayPricePerUnit}</div>
+                 </div>
+               </React.Fragment>
+               :
                <div className="productTile__info--priceWrapper">
-                 <div className="productTile__info--salePrice">{formatter.format(displaySalePrice/100)}</div>
+                 <div className="productTile__info--price">{formatter.format(displayPrice/100)}</div>
                  <div className="productTile__info--price">{displayPricePerUnit}</div>
                </div>
-             </React.Fragment>
-             :
-             <div className="productTile__info--priceWrapper">
-               <div className="productTile__info--price">{formatter.format(displayPrice/100)}</div>
-               <div className="productTile__info--price">{displayPricePerUnit}</div>
-             </div>
-           }
-           <div className="productTile__actionButtons">
-             <div className="productTile__bookmark"></div>
-             <button className="button">Add</button>
+             }
            </div>
+         </div>
+         <div className="productTile__actionButtons">
+           <div className="productTile__bookmark"></div>
+           <button className="button">Add</button>
          </div>
        </div>
      )

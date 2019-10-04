@@ -3,8 +3,8 @@ import ProductTile from './productTile';
 
 const ProductGrid = ({ products }) =>
   <div className="productGrid">
-    { products.map((product) =>
-        <ProductTile product={product} />
+    { products.map((product, index) =>
+        <ProductTile product={product} key={index} />
       )
     }
   </div>

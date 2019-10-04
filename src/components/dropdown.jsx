@@ -25,14 +25,14 @@ class Dropdown extends React.Component {
     const { showOptions, options, selected } = this.state;
     return(
       <div className="dropdown__wrapper">
-        <div className="dropdown">
+        <div className="dropdown" onClick={() => this.toggleShowOptions()}>
           {options[selected].label}
-          <img src={Chevron} onClick={() => this.toggleShowOptions()} />
+          <img src={Chevron} alt="" />
         </div>
         { showOptions &&
           <div className="dropdown__options">
             { options.map((option, index) =>
-              <div className={`dropdown__option ${index == this.state.selected ? 'selected' : 'unselected'}`} onClick={() => this.handleSelect(index)}>{option.label}</div>
+              <div className={`dropdown__option ${index === this.state.selected ? 'selected' : 'unselected'}`} onClick={() => this.handleSelect(index)}>{option.label}</div>
             )}
           </div>
         }
