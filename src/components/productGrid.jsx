@@ -9,5 +9,4 @@ const ProductGrid = ({ products }) =>
     }
   </div>
 
-
 export default ProductGrid;

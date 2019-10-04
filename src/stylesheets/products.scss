@@ -1,14 +1,21 @@
 .productGrid {
   @include flex-row;
   flex-wrap: wrap;
-  margin: 0 $standard-side-margin;
-  margin-top: $top-margin;
+  margin: 0 $mobile-side-margin;
+  margin-top: $mobile-top-margin;
+  @include bp-tablet {
+    margin: 0 $tablet-side-margin;
+    margin-top: $tablet-top-margin;
+  }
 }
 .productTile {
   @include flex-column;
-  flex: 0 0 21%;
+  flex: 0 0 100%;
   margin-bottom: 15px;
   border: 1px solid $grey-lighter;
+  @include bp-tablet {
+    flex: 0 0 21%;
+  }
   .productTile__image--wrapper {
     position: relative;
   }

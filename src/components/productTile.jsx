@@ -10,7 +10,7 @@ class ProductTile extends React.Component {
      }
    }
 
-   handleVarientSelect = (id) => {
+   handleVariantSelect = (id) => {
      if (id !== 0) {
        this.setState({ selectedVariant: id - 1 });
      } else {
@@ -49,7 +49,7 @@ class ProductTile extends React.Component {
                <Dropdown
                  options={this.getOptions()}
                  selected={this.selectedVariant}
-                 customOnClick={this.handleVarientSelect}
+                 customOnClick={this.handleVariantSelect}
                 />
                : <div className="productTile__info--measurement">{measurement.displayName}</div>
              }

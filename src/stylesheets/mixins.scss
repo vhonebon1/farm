@@ -11,8 +11,41 @@ $sale-red: #B30237;
 //standard layout sizes
 $header-height: 100px;
 $sub-header-height: 50px;
-$top-margin: 150px;
-$standard-side-margin: 60px;
+$tablet-top-margin: 150px;
+$mobile-top-margin: 120px;
+$tablet-side-margin: 60px;
+$mobile-side-margin: 20px;
+
+//breakpoints
+$break-small: 376px;
+$break-tablet: 768px;
+$break-desktop: 992px;
+$break-giant: 1170px;
+
+@mixin bp-small {
+  @media only screen and (min-width: 0px) {
+    @content;
+  }
+}
+
+@mixin bp-tablet {
+  @media only screen and (min-width: $break-tablet) {
+    @content;
+  }
+}
+
+@mixin bp-desktop{
+  @media only screen and (min-width: $break-desktop) {
+    @content;
+  }
+}
+
+@mixin bp-giant {
+  @media only screen and (min-width: $break-giant) {
+    @content;
+  }
+}
+
 
 @mixin flex-column {
   display: flex;

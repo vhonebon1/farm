@@ -3,6 +3,7 @@
   top: 0;
   height: $header-height;
   width: 100%;
+  z-index: 3;
   .header__topBar {
     background-color: $farmdrop-green;
     img {
@@ -14,11 +15,15 @@
   }
   .header__topBar, .header__bottomBar {
     height: $sub-header-height;
-    padding: 0 $standard-side-margin;
+    padding: 0 $mobile-side-margin;
+    @include bp-tablet {
+      padding: 0 $tablet-side-margin;
+    }
   }
   .header__bottomBar {
     display: flex;
     justify-content: flex-end;
+    background-color: white;
     img {
       margin: auto 0;
       &:hover {
