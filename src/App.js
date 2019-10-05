@@ -1,7 +1,7 @@
 import React from 'react';
 import products from './data/products.json';
-import ProductGrid from './components/productGrid.jsx'
-import Header from './components/header.jsx'
+import ProductGrid from './components/productGrid.jsx';
+import Header from './components/header.jsx';
 
 class App extends React.Component {
 

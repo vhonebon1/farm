@@ -1,6 +1,8 @@
 import React from 'react';
 import Dropdown from './dropdown';
 import formatter from './../utils/priceFormatter';
+import { connect } from 'react-redux';
+import { addToCart } from './actions/cartActions.js';
 
 class ProductTile extends React.Component {
    constructor(props) {
@@ -72,11 +74,19 @@ class ProductTile extends React.Component {
          </div>
          <div className="productTile__actionButtons">
            <div className="productTile__bookmark"></div>
-           <button className="button">Add</button>
+           <button className="button" onClick={() => this.props.addToCart(this.props.product)}>Add</button>
          </div>
        </div>
      )
    }
 }
 
-export default ProductTile;
+function mapStateToProps(state, props) {
+  return { cart: state.cart };
+}
+
+function mapDispatchToProps(dispatch) {
+  return { addToCart: item => dispatch(addToCart(item)) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductTile);
