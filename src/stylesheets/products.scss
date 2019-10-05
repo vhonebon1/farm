@@ -14,7 +14,7 @@
   margin-bottom: 15px;
   border: 1px solid $grey-lighter;
   @include bp-tablet {
-    flex: 0 0 21%;
+    flex: 0 0 24%;
   }
   .productTile__image--wrapper {
     position: relative;
@@ -35,11 +35,16 @@
   .productTile__actionButtons {
     @include flex-row;
     padding: 0 15px;
+    margin-top: 15px;
     .productTile__bookmark {
       width: 35px;
       height: 35px;
       border: 1px solid $grey-light;
       margin: auto 0;
+      margin-right: 10px;
+    }
+    .button {
+      flex: 1;
     }
   }
   .productTile__info {

@@ -16,7 +16,7 @@ $mobile-top-margin: 120px;
 $tablet-side-margin: 60px;
 $mobile-side-margin: 20px;
 
-//breakpoints
+//standard breakpoints
 $break-small: 376px;
 $break-tablet: 768px;
 $break-desktop: 992px;
@@ -46,6 +46,15 @@ $break-giant: 1170px;
   }
 }
 
+//fonts
+@mixin fontface($name, $file, $weight: normal, $style: normal){
+  @font-face {
+    font-family: "#{$name}";
+    src: url('/fonts/#{$file}.eot');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
 
 @mixin flex-column {
   display: flex;
