@@ -13,7 +13,7 @@ class Header extends React.Component {
         </div>
         <div className="header__bottomBar">
           <img src={Basket} alt="" />
-          <h1>{this.props.cart.length}</h1>
+          <div className="header__bottomBar__count">{this.props.cart.length}</div>
         </div>
       </div>
     )
