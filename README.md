@@ -15,5 +15,6 @@ I'm travelling, with terrible internet. As a result, the test is a little rough 
 
 * Create a font mixin in mixins.scss that takes $style and $weight arguments and selects the corresponding file from the font folder provided.
 * At the moment, the addToBasket action pushes the entire product to the cart state. Ideally, this would push the variant info if a variant has been selected in a dropdown. I imagine your real data has product ids - these could be used by productTile.jsx to check against the central state to show an '1 in basket' image overlay if already added.
+* Lazy load images to improve page performance (in the past I've used react-lazyload).
 * Refactoring the logic in productTile.jsx that calculates display info (lines 35-38). Perhaps with an extra utils file.
 * More comprehensive component tests which test critical functionality (e.g. checking add to basket functionality renders updated basket count).
